@@ -1,12 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import { Header } from "../components/Header";
+import { PostCards } from "../components/PostCards/Index";
 
 export default function Home() {
   return (
     <>
-      <Box>Exemplo</Box>
-
       <Header />
+      <PostCards />
     </>
   );
 }
