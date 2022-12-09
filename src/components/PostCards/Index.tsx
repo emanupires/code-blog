@@ -1,13 +1,26 @@
 import { Flex, Heading, IconButton, Text } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { api, getAllPosts, showPostsOnANewPage } from "../../services/api";
+import { useRouter } from "next/router";
+import { StarButton } from "../StarButton";
+import Link from "next/link";
+
+export interface IPosts {
+  id: number;
+  title: string;
+  body: string;
+}
 
 export const PostCards = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [allPosts, setAllPosts] = useState<IPosts[] | null>(null);
 
-  const handleClick = () => {
-    setIsActive((current) => !current);
-  };
+  const router = useRouter();
+
+  useEffect(() => {
+    getAllPosts().then((res) => setAllPosts(res));
+  }, []);
 
   return (
     <Flex
@@ -17,43 +30,54 @@ export const PostCards = () => {
       width={"100%"}
     >
       <Flex
-        bgColor="#FFFFFF"
-        boxShadow="xs"
         direction={"column"}
         maxW={{ base: "full", md: "1170px" }}
-        padding={"24px"}
         width={"100%"}
       >
-        <Flex
-          alignItems={"center"}
-          direction={"row"}
-          justify={"space-between"}
-          mb={"16px"}
-        >
-          <Text color="#717171" fontSize={{ base: "14px", md: "16px" }}>
-            Data aqui
-          </Text>
-          <IconButton
-            variant={"ghost"}
-            aria-label="Favoritar"
-            icon={
-              <StarIcon
-                color={isActive ? "#D10000" : "#717171"}
-                onClick={handleClick}
-              />
-            }
-          />
-        </Flex>
-        <Flex direction={"column"}>
-          <Heading
-            color="#1A202C"
-            fontSize={{ base: "18px", md: "26px" }}
-            mb={"8px"}
-          >
-            titulo
-          </Heading>
-          <Text fontSize={{ base: "14px", md: "18px" }}>oi</Text>
-        </Flex>
+        {allPosts &&
+          allPosts.map((posts) => (
+            <>
+              <Flex
+                bgColor="#FFFFFF"
+                boxShadow="xs"
+                mb={{ base: "24px", md: "48px" }}
+                padding={"24px"}
+                direction={"column"}
+              >
+                <Link href={`${posts.id}`}>
+                  <Flex
+                    alignItems={"center"}
+                    direction={"row"}
+                    justify={"space-between"}
+                    mb={"16px"}
+                    key={posts.id}
+                  >
+                    <Text
+                      color="#717171"
+                      fontSize={{ base: "14px", md: "16px" }}
+                    >
+                      09 de dez., 2022
+                    </Text>
+                    <Flex>
+                      <StarButton />
+                    </Flex>
+                  </Flex>
+                  <Flex direction={"column"}>
+                    <Heading
+                      color="#1A202C"
+                      fontSize={{ base: "18px", md: "26px" }}
+                      mb={"8px"}
+                    >
+                      {posts.title}
+                    </Heading>
+                    <Text fontSize={{ base: "14px", md: "18px" }}>
+                      {posts.body}
+                    </Text>
+                  </Flex>
+                </Link>
+              </Flex>
+            </>
+          ))}
       </Flex>
     </Flex>
   );
