@@ -24,7 +24,12 @@ export const PostCards = () => {
         padding={"24px"}
         width={"100%"}
       >
-        <Flex direction={"row"} justify={"space-between"}>
+        <Flex
+          alignItems={"center"}
+          direction={"row"}
+          justify={"space-between"}
+          mb={"16px"}
+        >
           <Text color="#717171" fontSize={{ base: "14px", md: "16px" }}>
             Data aqui
           </Text>
@@ -40,7 +45,11 @@ export const PostCards = () => {
           />
         </Flex>
         <Flex direction={"column"}>
-          <Heading color="#1A202C" fontSize={{ base: "18px", md: "26px" }}>
+          <Heading
+            color="#1A202C"
+            fontSize={{ base: "18px", md: "26px" }}
+            mb={"8px"}
+          >
             titulo
           </Heading>
           <Text fontSize={{ base: "14px", md: "18px" }}>oi</Text>
