@@ -9,10 +9,8 @@ export const Header = () => {
       width={"100%"}
     >
       <Flex maxWidth={{ base: "full", md: "1170px" }}>
-        <Flex>
-          <Heading>Codelândia</Heading>
-          <Heading>blog</Heading>
-        </Flex>
+        <Heading>Codelândia</Heading>
+        <Heading>blog</Heading>
       </Flex>
     </Flex>
   );
