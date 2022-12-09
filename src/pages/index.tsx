@@ -1,5 +1,12 @@
 import { Box } from "@chakra-ui/react";
+import { Header } from "../components/Header";
 
 export default function Home() {
-  return <Box>This is a box</Box>;
+  return (
+    <>
+      <Box>Exemplo</Box>
+
+      <Header />
+    </>
+  );
 }
