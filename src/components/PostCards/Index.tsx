@@ -44,25 +44,22 @@ export const PostCards = () => {
                 padding={"24px"}
                 direction={"column"}
               >
-                <Link href={`${posts.id}`}>
-                  <Flex
-                    alignItems={"center"}
-                    direction={"row"}
-                    justify={"space-between"}
-                    mb={"16px"}
-                    key={posts.id}
-                  >
-                    <Text
-                      color="#717171"
-                      fontSize={{ base: "14px", md: "16px" }}
-                    >
-                      09 de dez., 2022
-                    </Text>
-                    <Flex>
-                      <StarButton />
-                    </Flex>
+                <Flex
+                  alignItems={"center"}
+                  direction={"row"}
+                  justify={"space-between"}
+                  mb={"16px"}
+                  key={posts.id}
+                >
+                  <Text color="#717171" fontSize={{ base: "14px", md: "16px" }}>
+                    09 de dez., 2022
+                  </Text>
+                  <Flex>
+                    <StarButton />
                   </Flex>
-                  <Flex direction={"column"}>
+                </Flex>
+                <Flex direction={"column"}>
+                  <Link href={`${posts.id}`}>
                     <Heading
                       color="#1A202C"
                       fontSize={{ base: "18px", md: "26px" }}
@@ -70,11 +67,11 @@ export const PostCards = () => {
                     >
                       {posts.title}
                     </Heading>
-                    <Text fontSize={{ base: "14px", md: "18px" }}>
-                      {posts.body}
-                    </Text>
-                  </Flex>
-                </Link>
+                  </Link>
+                  <Text fontSize={{ base: "14px", md: "18px" }}>
+                    {posts.body}
+                  </Text>
+                </Flex>
               </Flex>
             </>
           ))}
