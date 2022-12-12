@@ -1,4 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
+import Link from "next/link";
 import { Search } from "../Search";
 
 export const Header = () => {
@@ -21,22 +22,26 @@ export const Header = () => {
           paddingBottom={{ base: "42px", md: "72px" }}
         >
           <Flex p={"24x"} direction={"row"}>
-            <Heading
-              color="#FFFFFF"
-              fontSize={{ base: "18px", md: "24px" }}
-              fontWeight={"400"}
-            >
-              Codelândia
-            </Heading>
+            <Link href="http://localhost:3000">
+              <Heading
+                color="#FFFFFF"
+                fontSize={{ base: "18px", md: "24px" }}
+                fontWeight={"400"}
+              >
+                Codelândia
+              </Heading>
+            </Link>
           </Flex>
           <Flex p={"24x"}>
-            <Heading
-              color="#FFFFFF"
-              fontSize={{ base: "18px", md: "24px" }}
-              fontWeight={"400"}
-            >
-              blog
-            </Heading>
+            <Link href="http://localhost:3000">
+              <Heading
+                color="#FFFFFF"
+                fontSize={{ base: "18px", md: "24px" }}
+                fontWeight={"400"}
+              >
+                blog
+              </Heading>
+            </Link>
           </Flex>
         </Flex>
         <Search />
