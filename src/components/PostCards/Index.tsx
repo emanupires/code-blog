@@ -27,6 +27,10 @@ export const PostCards = ({ post }: any) => {
   const router = useRouter();
   const [allPosts, setAllPosts] = useState<IPosts[] | null>(null);
 
+  useEffect(() => {
+    getAllPosts().then((res) => setAllPosts(res));
+  }, []);
+
   return (
     <Flex
       justify={"center"}
