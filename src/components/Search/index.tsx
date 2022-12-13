@@ -1,5 +1,7 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import PostCards from "../PostCards/Index";
+import { useState } from "react";
 
 export const Search = () => {
   return (

@@ -1,4 +1,5 @@
 import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Header } from "../components/Header";

@@ -1,11 +1,21 @@
 import { Flex, Heading, IconButton, Text } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC, ChangeEvent } from "react";
 import axios from "axios";
 import { api, getAllPosts, showPostsOnANewPage } from "../../services/api";
 import { useRouter } from "next/router";
 import { StarButton } from "../StarButton";
 import Link from "next/link";
+import {
+  Pagination,
+  usePagination,
+  PaginationPage,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationPageGroup,
+  PaginationContainer,
+  PaginationSeparator,
+} from "@ajna/pagination";
 
 export interface IPosts {
   id: number;
@@ -13,14 +23,9 @@ export interface IPosts {
   body: string;
 }
 
-export const PostCards = () => {
-  const [allPosts, setAllPosts] = useState<IPosts[] | null>(null);
-
+export const PostCards = ({ post }: any) => {
   const router = useRouter();
-
-  useEffect(() => {
-    getAllPosts().then((res) => setAllPosts(res));
-  }, []);
+  const [allPosts, setAllPosts] = useState<IPosts[] | null>(null);
 
   return (
     <Flex
@@ -43,13 +48,13 @@ export const PostCards = () => {
                 mb={{ base: "24px", md: "48px" }}
                 padding={"24px"}
                 direction={"column"}
+                key={posts.id}
               >
                 <Flex
                   alignItems={"center"}
                   direction={"row"}
                   justify={"space-between"}
                   mb={"16px"}
-                  key={posts.id}
                 >
                   <Text color="#717171" fontSize={{ base: "14px", md: "16px" }}>
                     09 de dez., 2022
@@ -79,3 +84,5 @@ export const PostCards = () => {
     </Flex>
   );
 };
+
+export default PostCards;

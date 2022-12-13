@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import { Header } from "../components/Header";
 import { PostCards } from "../components/PostCards/Index";
 
