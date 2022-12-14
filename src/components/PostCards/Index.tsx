@@ -16,20 +16,20 @@ import {
   PaginationContainer,
   PaginationSeparator,
 } from "@ajna/pagination";
+import { IAllPostData } from "../../pages";
 
-export interface IPosts {
-  id: number;
-  title: string;
-  body: string;
+// export interface IPosts {
+//   id: number;
+//   title: string;
+//   body: string;
+// }
+
+interface Props {
+  allPosts: IAllPostData[];
 }
 
-export const PostCards = ({ post }: any) => {
+export const PostCards = ({ allPosts }: Props) => {
   const router = useRouter();
-  const [allPosts, setAllPosts] = useState<IPosts[] | null>(null);
-
-  useEffect(() => {
-    getAllPosts().then((res) => setAllPosts(res));
-  }, []);
 
   return (
     <Flex
@@ -44,7 +44,7 @@ export const PostCards = ({ post }: any) => {
         width={"100%"}
       >
         {allPosts &&
-          allPosts.map((posts) => (
+          allPosts.map((post) => (
             <>
               <Flex
                 bgColor="#FFFFFF"
@@ -52,7 +52,7 @@ export const PostCards = ({ post }: any) => {
                 mb={{ base: "24px", md: "48px" }}
                 padding={"24px"}
                 direction={"column"}
-                key={posts.id}
+                key={post.id}
               >
                 <Flex
                   alignItems={"center"}
@@ -61,24 +61,24 @@ export const PostCards = ({ post }: any) => {
                   mb={"16px"}
                 >
                   <Text color="#717171" fontSize={{ base: "14px", md: "16px" }}>
-                    09 de dez., 2022
+                    {post.attributes?.data}
                   </Text>
                   <Flex>
                     <StarButton />
                   </Flex>
                 </Flex>
                 <Flex direction={"column"}>
-                  <Link href={`${posts.id}`}>
+                  <Link href={`/post/${post.id}`}>
                     <Heading
                       color="#1A202C"
                       fontSize={{ base: "18px", md: "26px" }}
                       mb={"8px"}
                     >
-                      {posts.title}
+                      {post.attributes?.title}
                     </Heading>
                   </Link>
                   <Text fontSize={{ base: "14px", md: "18px" }}>
-                    {posts.body}
+                    {post.attributes?.summary}
                   </Text>
                 </Flex>
               </Flex>
