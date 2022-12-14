@@ -35,6 +35,6 @@ export async function getStaticProps() {
   return {
     props: {
       allPosts: allPosts.data,
-    }, // will be passed to the page component as props
+    },
   };
 }

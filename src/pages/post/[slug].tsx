@@ -2,6 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import axios from "axios";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import { ParsedUrlQuery } from "querystring";
 import { IAllPosts } from "..";
 import { getAllPosts } from "../../services/api";
 
